@@ -1,37 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import FileListItem from './listitem';
 import './index.css';
-import FileNameIcon from './filename.js';
-import Message from './message.js';
-import Time from './time.js';
 
-function FileList({ files }) {
-	return (
-		<table className="file-list">
-			<tbody>
-				{files.map(file => (
-					<FileListItem key={file.id} file={file} />
-				))}
-			</tbody>
-		</table>
-	);
-}
+const FileList = ({ files }) => (
+	<table className="file-list">
+		<tbody>
+			{files.map( file => (
+
+				<FileListItem key={file.id} file={file} />
+
+			))}
+		</tbody>
+	</table>
+);
 FileList.propTypes = {
 	files: PropTypes.array
-}
-
-const FileListItem = ({ file }) => (
-	<tr className="file-list-item">
-		<FileNameIcon name={file.name} type={file.type} />
-		<Message text={file.latestCommit} />
-		<Time time={file.updated_at} />
-	</tr>
-);
-FileListItem.propTypes = {
-	file: PropTypes.object.isRequired
-}
-
+};
 
 const testFiles = [
 	{

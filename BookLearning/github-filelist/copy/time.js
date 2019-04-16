@@ -5,8 +5,13 @@ import moment from 'moment';
 const Time = ({ time }) => {
 	const timeString = moment(time).fromNow();
 	return (
-		<td className="time">{timeString}</td>
+		<span className="time">
+			{timeString} 
+		</span>
 	);
+};
+Time.propTypes = {
+	time: PropTypes.string.isRequired
 }
 
 export default Time;
