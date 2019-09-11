@@ -1,0 +1,12 @@
+exports[`test renders 1`] = `
+<div>
+  <span>
+    Hello
+  </span>
+   
+  <span>
+    World
+  </span>
+  !
+</div>
+`;
