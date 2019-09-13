@@ -1,16 +1,16 @@
 import React from 'react';
 
-function Header({ activeTab, onTabChange, isBottom, showMenu, menuTrigger }) {
+function Header({ activeTab, onTabChange, isBottom }) {
 
 	return (
-		<header className={`${showMenu ? ' menu_panel' : ''}`}>
+		<header>
 			<div className="inner">
 
 				<a className="branding" href="/home">
 					<img src="images/stillbotanical-logo.png" alt="Still Botanicals logo" />
 				</a>
 
-				<nav className={`menu${isBottom === true ? ' white' : ''}${showMenu ? ' open' : ''}`}>
+				<nav className={`menu ${isBottom === true && 'white'}`}>
 					<ul className="menu__inner">
 					
 						<li className={`menu__item ${activeTab === 0 && 'menu__item--current'}`}>
@@ -42,7 +42,7 @@ function Header({ activeTab, onTabChange, isBottom, showMenu, menuTrigger }) {
 					</ul>
 				</nav>
 
-				<div className={`menu__trigger${isBottom === true ? ' white' : ''}`} onClick={menuTrigger}>
+				<div className="menu__trigger">
 					<span></span>
 					<span></span>
 					<span></span>

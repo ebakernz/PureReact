@@ -1,7 +1,7 @@
 import React from 'react';
 import Slide from './Slide';
 
-function Homepage({ slides, numSlides, currentSlide, onClickChange }) {
+function Homepage({ slides }) {
 
 	let productImg = '/assets/product-bottles.png';
 
@@ -18,12 +18,12 @@ function Homepage({ slides, numSlides, currentSlide, onClickChange }) {
 				</div>
 				
 				<div className="slide_track">
-					{slides.map(slide => (
+					{slides.map((slide, index, {length}) => (
 						<Slide 
 							key={slide.id} 
 							slide={slide} 
-							numSlides={numSlides} 
-							currentSlide={currentSlide} />
+							index={index} 
+							length={length} />
 					))}
 				</div>
 
@@ -31,7 +31,7 @@ function Homepage({ slides, numSlides, currentSlide, onClickChange }) {
 
 			<div className="slide_nav">
 				{slides.map(slide=> (
-					<SlideNav key={slide.id} index={slide.id - 1} current={currentSlide} onClick={onClickChange}>{slide.id}</SlideNav>
+					<span key={slide.id} className="slide_button<% if First %> active<% end_if %>"></span>
 				))}
 			</div>
 
@@ -48,23 +48,6 @@ const ProductBackground = ({ id, productBg }) => {
 	} else {
 		return (
 			null
-		);
-	}
-}
-
-class SlideNav extends React.Component {
-
-	handleClick = () => {
-		this.props.onClick(this.props.index);
-	}
-
-	render() {
-		let { current } = this.props;
-		let slideID = this.props.children;
-		let isCurrent = slideID === current + 1;
-
-		return (
-			<a onClick={this.handleClick} className={`slide_button${isCurrent ? ' active' : ''}`}></a>
 		);
 	}
 }
